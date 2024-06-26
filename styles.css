@@ -1,12 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Georgia', serif;
     margin: 0;
     padding-bottom: 60px; /* Ensure there's space for the fixed buttons */
+    background: #f9f9f9; /* Light background for book-like appearance */
+    color: #333; /* Dark text for readability */
 }
 
 #sentence-list {
-    max-width: 1200px; /* Limit the maximum width */
-    margin: 0 auto; /* Center the div */
+    max-width: 800px; /* Narrower width for book-like appearance */
+    margin: 40px auto; /* Center the div with top and bottom margin */
+    padding: 20px;
+    background: white; /* White background for book pages */
+    box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Light shadow for a raised effect */
+    border-radius: 10px; /* Rounded corners for a softer look */
 }
 
 .sentence-pair-container {
@@ -16,7 +22,7 @@ body {
 }
 
 .sentence-pair-container:nth-child(even) {
-    background-color: #ffff0017; /* Light yellow color for even rows */
+    background-color: #ffffe0; /* Light yellow color for even rows */
 }
 
 .sentence-pair {
@@ -32,6 +38,7 @@ body {
     flex: 1 1 45%;
     padding: 10px;
     font-size: 18px; /* Default font size for sentences */ 
+    line-height: 1.6; /* Increase line height for readability */
 }
 
 @media (max-width: 600px) {
@@ -56,20 +63,29 @@ body {
     font-size: 28px; /* Updated font size for titles */
     font-weight: bold;
     text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center; /* Center align titles */
 }
 
 #start-button {
     display: block;
-    margin: 0 auto -10px auto; /* Updated margin */
+    margin: 20px auto; /* Center the button with margin */
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    background: #4CAF50; /* Green background for start button */
+    color: white; /* White text for start button */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Light shadow for the button */
 }
 
 .play-button {
     font-size: 20px;
     cursor: pointer;
     margin-left: 10px;
+    color: #4CAF50; /* Green color for play button */
 }
 
 .controls-container {
@@ -96,6 +112,11 @@ body {
     font-size: 16px;
     cursor: pointer;
     margin-top: 12px;
+    background: #4CAF50; /* Green background for buttons */
+    color: white; /* White text for buttons */
+    border: none;
+    border-radius: 5px; /* Rounded corners for buttons */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Light shadow for buttons */
 }
 
 .bottom-buttons a {
@@ -103,7 +124,7 @@ body {
 }
 
 .active-button {
-    background-color: #4CAF50;
+    background-color: #45a049; /* Slightly darker green for active button */
     color: white;
 }
 
