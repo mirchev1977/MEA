@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const playButton = document.createElement('div');
         playButton.className = 'play-button';
-        playButton.innerHTML = '▶️'; // Play button icon
+        playButton.innerHTML = '((( &#9654; )))'; // Play button icon
         playButton.addEventListener('click', () => selectSentence(index));
 
         playButtonContainer.appendChild(playButton);
