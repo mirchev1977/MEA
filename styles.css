@@ -43,13 +43,13 @@ body {
 .highlight-english {
     color: #ae4141;
     font-weight: bold;
-    font-size: 27px; /* Increased font size for highlighted sentences */
+    font-size: 22px; /* Updated font size for highlighted sentences */
 }
 
 .highlight-bulgarian {
     color: #1f1fde;
     font-weight: bold;
-    font-size: 27px; /* Increased font size for highlighted sentences */
+    font-size: 22px; /* Updated font size for highlighted sentences */
 }
 
 #start-button {
@@ -108,3 +108,4 @@ body {
         order: 1;
     }
 }
+
