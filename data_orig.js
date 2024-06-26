@@ -1,5 +1,5 @@
 const sentences = [
-    { english: "A Retrieved Reformation", 
+    { title: 1, english: "A Retrieved Reformation", 
         bulgarian: 'Възстановена реформация', 
         audioEn: "audio/ORIG/ENG/0001.mp3", 
         audioBg: "audio/ORIG/BUL/0001.mp3" },

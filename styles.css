@@ -53,8 +53,9 @@ body {
 }
 
 .title-english, .title-bulgarian {
-    font-size: 24px;
+    font-size: 28px; /* Updated font size for titles */
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 #start-button {
