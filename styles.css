@@ -52,6 +52,11 @@ body {
     font-size: 22px; /* Updated font size for highlighted sentences */
 }
 
+.title-english, .title-bulgarian {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 #start-button {
     display: block;
     margin: 0 auto -10px auto; /* Updated margin */

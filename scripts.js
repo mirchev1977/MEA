@@ -40,20 +40,20 @@ function playAudio() {
             currentAudio.pause();
         }
         isPlaying = false;
-        startButton.textContent = "Старт";
+        startButton.innerHTML = '((( &#9654; ))) Старт'; // Play button icon
         return;
     }
 
     if (currentAudio && currentAudio.paused) {
         currentAudio.play().then(() => {
             isPlaying = true;
-            startButton.textContent = "Пауза";
+            startButton.innerHTML = '&#9208; Пауза'; // Pause button icon
         }).catch(error => console.error("Error playing audio:", error));
         return;
     }
 
     isPlaying = true;
-    startButton.textContent = "Пауза";
+    startButton.innerHTML = '&#9208; Пауза'; // Pause button icon
     playNext();
 }
 
@@ -61,9 +61,16 @@ function highlightSentence() {
     document.querySelectorAll('.sentence-pair').forEach((pair, index) => {
         pair.querySelector('.english').classList.remove('highlight-english');
         pair.querySelector('.bulgarian').classList.remove('highlight-bulgarian');
+        pair.classList.remove('title-english', 'title-bulgarian');
+
         if (index === currentIndex) {
             pair.querySelector('.english').classList.add('highlight-english');
             pair.querySelector('.bulgarian').classList.add('highlight-bulgarian');
+        }
+
+        // Add title classes back if it's a title
+        if (sentences[index].title) {
+            pair.classList.add('title-english', 'title-bulgarian');
         }
     });
     moveButtonToCurrentSentence();
@@ -102,12 +109,17 @@ document.addEventListener('DOMContentLoaded', () => {
         bulgarianDiv.className = 'sentence bulgarian';
         bulgarianDiv.textContent = sentence.bulgarian;
 
+        if (sentence.title) {
+            englishDiv.classList.add('title-english');
+            bulgarianDiv.classList.add('title-bulgarian');
+        }
+
         const playButtonContainer = document.createElement('div');
         playButtonContainer.className = 'play-button-container';
 
         const playButton = document.createElement('div');
         playButton.className = 'play-button';
-        playButton.innerHTML = '((( &nbsp; &#9654; &nbsp; )))'; // Play button icon
+        playButton.innerHTML = '((( &#9654; )))'; // Play button icon
         playButton.addEventListener('click', () => selectSentence(index));
 
         playButtonContainer.appendChild(playButton);
