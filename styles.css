@@ -8,6 +8,9 @@ body {
     padding: 10px;
     position: relative;
 }
+.sentence-pair-container:nth-child(even) {
+    background-color: #ffff0017; /* Light yellow color for even rows */
+}
 .sentence-pair {
     display: flex;
     flex-wrap: wrap;
@@ -19,7 +22,7 @@ body {
 .sentence {
     flex: 1 1 45%;
     padding: 10px;
-    font-size: 18px; /* Default font size for sentences */
+    font-size: 18px; /* Default font size for sentences */ 
 }
 @media (max-width: 600px) {
     .sentence {
@@ -29,16 +32,16 @@ body {
 .highlight-english {
     color: #ae4141;
     font-weight: bold;
-    font-size: 21px; /* Increased font size for highlighted sentences */
+    font-size: 27px; /* Increased font size for highlighted sentences */
 }
 .highlight-bulgarian {
     color: #1f1fde;
     font-weight: bold;
-    font-size: 21px; /* Increased font size for highlighted sentences */
+    font-size: 27px; /* Increased font size for highlighted sentences */
 }
 #start-button {
     display: block;
-    margin: 0 auto -10px auto;
+    margin: 0 auto -10px auto; /* Updated margin */
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
