@@ -112,6 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sentence.title) {
             englishDiv.classList.add('title-english');
             bulgarianDiv.classList.add('title-bulgarian');
+            englishDiv.textContent = englishDiv.textContent.toUpperCase();
+            bulgarianDiv.textContent = bulgarianDiv.textContent.toUpperCase();
         }
 
         const playButtonContainer = document.createElement('div');
@@ -136,4 +138,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startButton.addEventListener('click', playAudio);
 });
-
