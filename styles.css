@@ -3,14 +3,22 @@ body {
     margin: 0;
     padding-bottom: 60px; /* Ensure there's space for the fixed buttons */
 }
+
+#sentence-list {
+    max-width: 1200px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the div */
+}
+
 .sentence-pair-container {
     margin-bottom: 20px;
     padding: 10px;
     position: relative;
 }
+
 .sentence-pair-container:nth-child(even) {
     background-color: #ffff0017; /* Light yellow color for even rows */
 }
+
 .sentence-pair {
     display: flex;
     flex-wrap: wrap;
@@ -19,26 +27,31 @@ body {
     transition: all 0.3s ease; /* Updated to transition all properties */
     align-items: center;
 }
+
 .sentence {
     flex: 1 1 45%;
     padding: 10px;
     font-size: 18px; /* Default font size for sentences */ 
 }
+
 @media (max-width: 600px) {
     .sentence {
         flex: 1 1 100%;
     }
 }
+
 .highlight-english {
     color: #ae4141;
     font-weight: bold;
     font-size: 27px; /* Increased font size for highlighted sentences */
 }
+
 .highlight-bulgarian {
     color: #1f1fde;
     font-weight: bold;
     font-size: 27px; /* Increased font size for highlighted sentences */
 }
+
 #start-button {
     display: block;
     margin: 0 auto -10px auto; /* Updated margin */
@@ -46,17 +59,20 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
+
 .play-button {
     font-size: 20px;
     cursor: pointer;
     margin-left: 10px;
 }
+
 .controls-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
 }
+
 .bottom-buttons {
     position: fixed;
     bottom: 0;
@@ -68,19 +84,23 @@ body {
     flex-wrap: wrap;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
 }
+
 .bottom-buttons button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 12px;
 }
+
 .bottom-buttons a {
     text-decoration: none;
 }
+
 .active-button {
     background-color: #4CAF50;
     color: white;
 }
+
 @media (max-width: 600px) {
     .bottom-buttons a:nth-last-child(1) {
         width: 100%;
@@ -88,4 +108,3 @@ body {
         order: 1;
     }
 }
-
