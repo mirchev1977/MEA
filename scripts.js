@@ -40,20 +40,20 @@ function playAudio() {
             currentAudio.pause();
         }
         isPlaying = false;
-        startButton.textContent = "Start";
+        startButton.textContent = "Старт";
         return;
     }
 
     if (currentAudio && currentAudio.paused) {
         currentAudio.play().then(() => {
             isPlaying = true;
-            startButton.textContent = "Pause";
+            startButton.textContent = "Пауза";
         }).catch(error => console.error("Error playing audio:", error));
         return;
     }
 
     isPlaying = true;
-    startButton.textContent = "Pause";
+    startButton.textContent = "Пауза";
     playNext();
 }
 
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const playButton = document.createElement('div');
         playButton.className = 'play-button';
-        playButton.innerHTML = '((( &#9654; )))'; // Play button icon
+        playButton.innerHTML = '((( &nbsp; &#9654; &nbsp; )))'; // Play button icon
         playButton.addEventListener('click', () => selectSentence(index));
 
         playButtonContainer.appendChild(playButton);
