@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-bottom: 60px; /* Ensure there's space for the fixed buttons */
+}
+.sentence-pair-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    position: relative;
+}
+.sentence-pair {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+.sentence {
+    flex: 1 1 45%;
+    padding: 10px;
+}
+@media (max-width: 600px) {
+    .sentence {
+        flex: 1 1 100%;
+    }
+}
+.highlight-english {
+    background-color: #d1e7fd;
+}
+.highlight-bulgarian {
+    background-color: #c4f0c5;
+}
+#start-button {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.play-button {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.bottom-buttons {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #f1f1f1;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+}
+.bottom-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+.bottom-buttons a {
+    text-decoration: none;
+}
+.active-button {
+    background-color: #4CAF50;
+    color: white;
+}
+@media (max-width: 600px) {
+    .bottom-buttons a:nth-last-child(1) {
+        width: 100%;
+        text-align: center;
+        order: 1;
+    }
+}
+
