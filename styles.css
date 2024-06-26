@@ -26,10 +26,12 @@ body {
     }
 }
 .highlight-english {
-    background-color: #d1e7fd;
+    color: #ae4141;
+    font-weight: bold;
 }
 .highlight-bulgarian {
-    background-color: #c4f0c5;
+    color: #1f1fde;
+    font-weight: bold;
 }
 #start-button {
     display: block;
