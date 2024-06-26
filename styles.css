@@ -13,12 +13,13 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease; /* Updated to transition all properties */
     align-items: center;
 }
 .sentence {
     flex: 1 1 45%;
     padding: 10px;
+    font-size: 18px; /* Default font size for sentences */
 }
 @media (max-width: 600px) {
     .sentence {
@@ -28,10 +29,12 @@ body {
 .highlight-english {
     color: #ae4141;
     font-weight: bold;
+    font-size: 21px; /* Increased font size for highlighted sentences */
 }
 .highlight-bulgarian {
     color: #1f1fde;
     font-weight: bold;
+    font-size: 21px; /* Increased font size for highlighted sentences */
 }
 #start-button {
     display: block;
