@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightActiveButton(); // Highlight the active button
 
     // Изчистване на състоянието при зареждане на страницата
-    if (performance.navigation.type === 1) {
+    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
         localStorage.removeItem('appState');
     }
 
