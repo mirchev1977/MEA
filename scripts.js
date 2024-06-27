@@ -2,6 +2,7 @@ let currentIndex = 0;
 let isPlaying = false;
 let currentAudio = null;
 let playEnglish = true; // Track which audio is currently playing
+let isFirstLoad = true; // Track if it's the first load
 
 const startButton = document.getElementById('start-button');
 const sentenceList = document.getElementById('sentence-list');
@@ -9,6 +10,10 @@ const controlsContainer = document.querySelector('.controls-container');
 const origButton = document.getElementById('orig-button');
 
 function moveButtonToCurrentSentence() {
+    if (isFirstLoad) {
+        isFirstLoad = false;
+        return;
+    }
     const currentSentenceContainer = document.querySelectorAll('.sentence-pair-container')[currentIndex];
     const playButtonContainer = currentSentenceContainer.querySelector('.play-button-container');
     playButtonContainer.appendChild(controlsContainer);
