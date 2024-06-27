@@ -123,13 +123,8 @@ body {
     text-decoration: none;
 }
 
-.active-button {
-    background-color: #45a049; /* Slightly darker green for active button */
-    color: white;
-}
-
 button.active-button.active-button {
-    background-color: skyblue;
+    background-color: skyblue; /* Sky blue background for active button */
 }
 
 @media (max-width: 600px) {
