@@ -8,11 +8,6 @@ const startButton = document.getElementById('start-button');
 const sentenceList = document.getElementById('sentence-list');
 const controlsContainer = document.querySelector('.controls-container');
 const origButton = document.getElementById('orig-button');
-const openDemoButtonContainer = document.getElementById('open-demo-button-container');
-const openDemoButton = document.getElementById('open-demo-button');
-const appContainer = document.getElementById('app-container');
-const bottomButtons = document.querySelector('.bottom-buttons');
-const closeDemoButton = document.getElementById('close-demo-button');
 
 function moveButtonToCurrentSentence() {
     if (isFirstLoad) {
@@ -127,60 +122,45 @@ function highlightSelectedPair(event) {
     event.currentTarget.classList.add('selected');
 }
 
-function showAppContainer() {
-    if (appContainer) {
-        appContainer.style.display = 'block';
-    }
-    if (bottomButtons) {
-        bottomButtons.style.display = 'flex'; // Показване на бутоните за нивата
-    }
-    if (openDemoButtonContainer) {
-        openDemoButtonContainer.style.display = 'none';
-    }
-    localStorage.setItem('appState', 'open');
-}
-
-function hideAppContainer() {
-    if (appContainer) {
-        appContainer.style.display = 'none';
-    }
-    if (bottomButtons) {
-        bottomButtons.style.display = 'none'; // Скриване на бутоните за нивата
-    }
-    if (openDemoButtonContainer) {
-        openDemoButtonContainer.style.display = 'flex';
-    }
-    localStorage.setItem('appState', 'closed');
-}
-
 window.addEventListener('resize', handleResize);
 document.addEventListener('DOMContentLoaded', () => {
     handleResize(); // Set the initial state
     highlightActiveButton(); // Highlight the active button
 
-    // Изчистване на състоянието при зареждане на страницата
-    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-        localStorage.removeItem('appState');
-    }
-
-    const appState = localStorage.getItem('appState');
-    if (appState === 'open') {
-        showAppContainer();
-    } else {
-        hideAppContainer();
-    }
+    const openDemoButton = document.getElementById('open-demo-button');
+    const closeDemoButton = document.getElementById('close-demo-button');
 
     if (openDemoButton) {
         openDemoButton.addEventListener('click', () => {
-            showAppContainer();
-            localStorage.setItem('appState', 'open'); // Запазване на състоянието при отваряне
+            const appContainer = document.getElementById('app-container');
+            const bottomButtons = document.querySelector('.bottom-buttons');
+            const openDemoButtonContainer = document.getElementById('open-demo-button-container');
+            if (appContainer) {
+                appContainer.style.display = 'block';
+            }
+            if (bottomButtons) {
+                bottomButtons.style.display = 'flex'; // Показване на бутоните за нивата
+            }
+            if (openDemoButtonContainer) {
+                openDemoButtonContainer.style.display = 'none';
+            }
         });
     }
 
     if (closeDemoButton) {
         closeDemoButton.addEventListener('click', () => {
-            hideAppContainer();
-            localStorage.setItem('appState', 'closed'); // Запазване на състоянието при затваряне
+            const appContainer = document.getElementById('app-container');
+            const bottomButtons = document.querySelector('.bottom-buttons');
+            const openDemoButtonContainer = document.getElementById('open-demo-button-container');
+            if (appContainer) {
+                appContainer.style.display = 'none';
+            }
+            if (bottomButtons) {
+                bottomButtons.style.display = 'none'; // Скриване на бутоните за нивата
+            }
+            if (openDemoButtonContainer) {
+                openDemoButtonContainer.style.display = 'flex';
+            }
         });
     }
 
