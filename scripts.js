@@ -168,8 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Move the controls container to the first sentence pair on page load
-    moveButtonToCurrentSentence();
+    controlsContainer.style.display = 'block'; // Ensure controls container is visible
+    const firstSentenceContainer = document.querySelector('.sentence-pair-container');
+    firstSentenceContainer.querySelector('.play-button-container').appendChild(controlsContainer);
 
     startButton.addEventListener('click', playAudio);
 });
-
