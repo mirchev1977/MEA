@@ -8,11 +8,18 @@ body {
     color: #333; /* Dark text for readability */
 }
 
+#open-demo-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the button is centered vertically */
+}
+
 #open-demo-button {
     display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
+    margin: 0 auto; /* Center the button horizontally */
+    padding: 30px 60px; /* Increased padding for a larger button */
+    font-size: 48px; /* Increased font size for a larger button */
     cursor: pointer;
     background: #4CAF50; /* Green background for the button */
     color: white; /* White text for the button */
@@ -23,6 +30,8 @@ body {
 
 #app-container {
     display: none; /* Скриване на цялото приложение първоначално */
+    min-height: 100vh; /* Ensure the application takes full height when opened */
+    background: #f9f9f9;
 }
 
 #sentence-list {

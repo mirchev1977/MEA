@@ -133,13 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
         openDemoButton.addEventListener('click', () => {
             const appContainer = document.getElementById('app-container');
             const bottomButtons = document.querySelector('.bottom-buttons');
+            const openDemoButtonContainer = document.getElementById('open-demo-button-container');
             if (appContainer) {
                 appContainer.style.display = 'block';
             }
             if (bottomButtons) {
                 bottomButtons.style.display = 'flex'; // Показване на бутоните за нивата
             }
-            openDemoButton.style.display = 'none';
+            if (openDemoButtonContainer) {
+                openDemoButtonContainer.style.display = 'none';
+            }
         });
     } else {
         // Ако няма бутон за отваряне на демото, показваме приложението по подразбиране
