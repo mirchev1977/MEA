@@ -74,7 +74,7 @@ function highlightSentence() {
         }
 
         // Add title classes back if it's a title
-        if (sentences[index].title) {
+        if (sentences[index] && sentences[index].title) {
             pair.classList.add('title-english', 'title-bulgarian');
         }
     });
@@ -127,6 +127,32 @@ document.addEventListener('DOMContentLoaded', () => {
     handleResize(); // Set the initial state
     highlightActiveButton(); // Highlight the active button
 
+    const openDemoButton = document.getElementById('open-demo-button');
+
+    if (openDemoButton) {
+        openDemoButton.addEventListener('click', () => {
+            const appContainer = document.getElementById('app-container');
+            const bottomButtons = document.querySelector('.bottom-buttons');
+            if (appContainer) {
+                appContainer.style.display = 'block';
+            }
+            if (bottomButtons) {
+                bottomButtons.style.display = 'flex'; // Показване на бутоните за нивата
+            }
+            openDemoButton.style.display = 'none';
+        });
+    } else {
+        // Ако няма бутон за отваряне на демото, показваме приложението по подразбиране
+        const appContainer = document.getElementById('app-container');
+        const bottomButtons = document.querySelector('.bottom-buttons');
+        if (appContainer) {
+            appContainer.style.display = 'block';
+        }
+        if (bottomButtons) {
+            bottomButtons.style.display = 'flex'; // Показване на бутоните за нивата
+        }
+    }
+
     sentences.forEach((sentence, index) => {
         const container = document.createElement('div');
         container.className = 'sentence-pair-container';
@@ -170,7 +196,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Move the controls container to the first sentence pair on page load
     controlsContainer.style.display = 'block'; // Ensure controls container is visible
     const firstSentenceContainer = document.querySelector('.sentence-pair-container');
-    firstSentenceContainer.querySelector('.play-button-container').appendChild(controlsContainer);
+    if (firstSentenceContainer) {
+        const playButtonContainer = firstSentenceContainer.querySelector('.play-button-container');
+        if (playButtonContainer) {
+            playButtonContainer.appendChild(controlsContainer);
+        }
+    }
 
     startButton.addEventListener('click', playAudio);
 });

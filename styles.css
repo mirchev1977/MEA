@@ -8,6 +8,23 @@ body {
     color: #333; /* Dark text for readability */
 }
 
+#open-demo-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #4CAF50; /* Green background for the button */
+    color: white; /* White text for the button */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Light shadow for the button */
+}
+
+#app-container {
+    display: none; /* Скриване на цялото приложение първоначално */
+}
+
 #sentence-list {
     max-width: 800px; /* Narrower width for book-like appearance */
     margin: 40px auto; /* Center the div with top and bottom margin */
@@ -108,8 +125,8 @@ body {
     width: 100%;
     background: #f1f1f1;
     padding: 10px 0;
-    display: flex;
-    justify-content: space-evenly;
+    display: none; /* Скриване на бутоните първоначално */
+    justify-content: center; /* Center align the buttons */
     flex-wrap: wrap;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
 }
@@ -118,7 +135,7 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 12px;
+    margin: 10px; /* Margin between buttons */
     background: #4CAF50; /* Green background for buttons */
     color: white; /* White text for buttons */
     border: none;
