@@ -128,6 +128,10 @@ body {
     color: white;
 }
 
+button.active-button.active-button {
+    background-color: skyblue;
+}
+
 @media (max-width: 600px) {
     .bottom-buttons a:nth-last-child(1) {
         width: 100%;

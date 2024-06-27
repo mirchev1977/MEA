@@ -90,9 +90,35 @@ function handleResize() {
     }
 }
 
+function highlightActiveButton() {
+    const currentPath = window.location.pathname.split("/").pop();
+    if (currentPath === "index.html" || currentPath === "") {
+        const buttonA1 = document.getElementById("button-A1");
+        if (buttonA1) buttonA1.classList.add("active-button");
+    } else if (currentPath === "A2.html") {
+        const buttonA2 = document.getElementById("button-A2");
+        if (buttonA2) buttonA2.classList.add("active-button");
+    } else if (currentPath === "B1.html") {
+        const buttonB1 = document.getElementById("button-B1");
+        if (buttonB1) buttonB1.classList.add("active-button");
+    } else if (currentPath === "B2.html") {
+        const buttonB2 = document.getElementById("button-B2");
+        if (buttonB2) buttonB2.classList.add("active-button");
+    } else if (currentPath === "C1.html") {
+        const buttonC1 = document.getElementById("button-C1");
+        if (buttonC1) buttonC1.classList.add("active-button");
+    } else if (currentPath === "C2.html") {
+        const buttonC2 = document.getElementById("button-C2");
+        if (buttonC2) buttonC2.classList.add("active-button");
+    } else if (currentPath === "ORIG.html") {
+        if (origButton) origButton.classList.add("active-button");
+    }
+}
+
 window.addEventListener('resize', handleResize);
 document.addEventListener('DOMContentLoaded', () => {
     handleResize(); // Set the initial state
+    highlightActiveButton(); // Highlight the active button
 
     sentences.forEach((sentence, index) => {
         const container = document.createElement('div');
@@ -138,3 +164,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startButton.addEventListener('click', playAudio);
 });
+
