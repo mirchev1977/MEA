@@ -151,7 +151,6 @@ function showAppContainer() {
         openDemoButtonContainer.style.display = 'none';
     }
     allowScrolling();
-    localStorage.setItem('appState', 'open');
 }
 
 function hideAppContainer() {
@@ -165,7 +164,6 @@ function hideAppContainer() {
         openDemoButtonContainer.style.display = 'flex';
     }
     preventScrolling();
-    localStorage.setItem('appState', 'closed');
 }
 
 window.addEventListener('resize', handleResize);
@@ -173,29 +171,32 @@ document.addEventListener('DOMContentLoaded', () => {
     handleResize(); // Set the initial state
     highlightActiveButton(); // Highlight the active button
 
-    // Изчистване на състоянието при зареждане на страницата
-    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-        localStorage.removeItem('appState');
-    }
-
-    const appState = localStorage.getItem('appState');
-    if (appState === 'open') {
-        showAppContainer();
-    } else {
+    const currentPath = window.location.pathname.split("/").pop();
+    if (currentPath === "index.html" || currentPath === "") {
         hideAppContainer();
+    } else {
+        showAppContainer();
     }
 
     if (openDemoButton) {
         openDemoButton.addEventListener('click', () => {
             showAppContainer();
-            localStorage.setItem('appState', 'open'); // Запазване на състоянието при отваряне
         });
     }
 
     if (closeDemoButton) {
         closeDemoButton.addEventListener('click', () => {
             hideAppContainer();
-            localStorage.setItem('appState', 'closed'); // Запазване на състоянието при затваряне
+        });
+    }
+
+    if (document.getElementById('button-A1')) {
+        document.getElementById('button-A1').addEventListener('click', () => {
+            if (appContainer.style.display === 'block') {
+                hideAppContainer();
+            } else {
+                showAppContainer();
+            }
         });
     }
 
