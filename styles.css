@@ -72,7 +72,7 @@ body {
 }
 
 .selected {
-    background-color: #d3d3d3; /* Light grey background for selected sentence */
+    background-color: #d3d3d3 !important; /* Light grey background for selected sentence */
 }
 
 #start-button {
