@@ -10,14 +10,14 @@
     <div id="open-demo-button-container">
         <button id="open-demo-button">ОТВОРИ ДЕМО!</button>
     </div>
-    <div id="app-container">
+    <div id="app-container" style="display: none;">
         <div id="sentence-list">
             <!-- Още изречения... -->
         </div>
         <div class="controls-container">
             <button id="start-button">Старт</button>
         </div>
-        <div class="bottom-buttons">
+        <div class="bottom-buttons" style="display: none;">
             <a href="index.html"><button id="button-A1">A1</button></a>
             <a href="A2.html"><button id="button-A2">A2</button></a>
             <a href="B1.html"><button id="button-B1">B1</button></a>
@@ -25,8 +25,11 @@
             <a href="C1.html"><button id="button-C1">C1</button></a>
             <a href="C2.html"><button id="button-C2">C2</button></a>
             <a href="ORIG.html"><button id="orig-button">ОРИГ</button></a>
+            <button id="close-demo-button"><span class="close-icon">✖</span> Затвори</button>
         </div>
     </div>
+    <div style="height: 600px;"></div>
+
     <script src="data_a1.js"></script>
     <script src="scripts.js"></script>
 </body>

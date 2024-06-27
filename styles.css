@@ -167,3 +167,20 @@ button.active-button.active-button {
         order: 1;
     }
 }
+
+#close-demo-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px; /* Margin between buttons */
+    background: #f44336; /* Red background for the close button */
+    color: white; /* White text for the close button */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Light shadow for the button */
+}
+
+#close-demo-button .close-icon {
+    margin-right: 5px; /* Space between the icon and the text */
+}
+
