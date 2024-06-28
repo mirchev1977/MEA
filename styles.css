@@ -13,6 +13,15 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Ensure the button is centered vertically */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#open-demo-button-container.show {
+    display: block;
 }
 
 #open-demo-button {
@@ -52,6 +61,10 @@ body {
 
 .sentence-pair-container:nth-child(even) {
     background-color: #ffffe0; /* Light yellow color for even rows */
+}
+
+.sentence-pair-container.selected {
+    border: 2px solid #007bff;
 }
 
 .sentence-pair {
@@ -183,4 +196,3 @@ button.active-button.active-button {
 #close-demo-button .close-icon {
     margin-right: 5px; /* Space between the icon and the text */
 }
-

@@ -148,7 +148,7 @@ function showAppContainer() {
         bottomButtons.style.display = 'flex'; // Показване на бутоните за нивата
     }
     if (openDemoButtonContainer) {
-        openDemoButtonContainer.style.display = 'none';
+        openDemoButtonContainer.classList.remove('show');
     }
     allowScrolling();
 }
@@ -161,7 +161,7 @@ function hideAppContainer() {
         bottomButtons.style.display = 'none'; // Скриване на бутоните за нивата
     }
     if (openDemoButtonContainer) {
-        openDemoButtonContainer.style.display = 'flex';
+        openDemoButtonContainer.classList.add('show');
     }
     preventScrolling();
 }
