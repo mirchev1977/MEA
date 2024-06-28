@@ -17,7 +17,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
 }
 
 #open-demo-button-container.show {
@@ -151,6 +150,7 @@ body {
     justify-content: center; /* Center align the buttons */
     flex-wrap: wrap;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    text-align: center; /* Center align the text inside the buttons */
 }
 
 .bottom-buttons button {

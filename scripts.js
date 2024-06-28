@@ -4,18 +4,18 @@ let currentAudio = null;
 let playEnglish = true; // Track which audio is currently playing
 let isFirstLoad = true; // Track if it's the first load
 
-const startButton = document.getElementById('start-button');
-const sentenceList = document.getElementById('sentence-list');
-const controlsContainer = document.querySelector('.controls-container');
-const origButton = document.getElementById('orig-button');
-const openDemoButtonContainer = document.getElementById('open-demo-button-container');
-const openDemoButton = document.getElementById('open-demo-button');
-const appContainer = document.getElementById('app-container');
-const bottomButtons = document.querySelector('.bottom-buttons');
-const closeDemoButton = document.getElementById('close-demo-button');
+const startButton = $('#start-button');
+const sentenceList = $('#sentence-list');
+const controlsContainer = $('.controls-container');
+const origButton = $('#orig-button');
+const openDemoButtonContainer = $('#open-demo-button-container');
+const openDemoButton = $('#open-demo-button');
+const appContainer = $('#app-container');
+const bottomButtons = $('.bottom-buttons');
+const closeDemoButton = $('#close-demo-button');
 
 // Проверка дали всички елементи са намерени
-if (!startButton || !sentenceList || !controlsContainer || !origButton || !openDemoButtonContainer || !openDemoButton || !appContainer || !bottomButtons || !closeDemoButton) {
+if (!startButton.length || !sentenceList.length || !controlsContainer.length || !origButton.length || !openDemoButtonContainer.length || !openDemoButton.length || !appContainer.length || !bottomButtons.length || !closeDemoButton.length) {
     console.error("One or more required elements are missing from the DOM");
 }
 
@@ -24,10 +24,10 @@ function moveButtonToCurrentSentence() {
         isFirstLoad = false;
         return;
     }
-    const currentSentenceContainer = document.querySelectorAll('.sentence-pair-container')[currentIndex];
-    const playButtonContainer = currentSentenceContainer.querySelector('.play-button-container');
-    playButtonContainer.appendChild(controlsContainer);
-    currentSentenceContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const currentSentenceContainer = $('.sentence-pair-container').eq(currentIndex);
+    const playButtonContainer = currentSentenceContainer.find('.play-button-container');
+    playButtonContainer.append(controlsContainer);
+    currentSentenceContainer[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function playNext() {
@@ -55,37 +55,37 @@ function playAudio() {
             currentAudio.pause();
         }
         isPlaying = false;
-        startButton.innerHTML = '((( &#9654; ))) Старт'; // Play button icon
+        startButton.html('((( &#9654; ))) Старт'); // Play button icon
         return;
     }
 
     if (currentAudio && currentAudio.paused) {
         currentAudio.play().then(() => {
             isPlaying = true;
-            startButton.innerHTML = '&#9208; Пауза'; // Pause button icon
+            startButton.html('&#9208; Пауза'); // Pause button icon
         }).catch(error => console.error("Error playing audio:", error));
         return;
     }
 
     isPlaying = true;
-    startButton.innerHTML = '&#9208; Пауза'; // Pause button icon
+    startButton.html('&#9208; Пауза'); // Pause button icon
     playNext();
 }
 
 function highlightSentence() {
-    document.querySelectorAll('.sentence-pair').forEach((pair, index) => {
-        pair.querySelector('.english').classList.remove('highlight-english');
-        pair.querySelector('.bulgarian').classList.remove('highlight-bulgarian');
-        pair.classList.remove('title-english', 'title-bulgarian');
+    $('.sentence-pair').each((index, pair) => {
+        $(pair).find('.english').removeClass('highlight-english');
+        $(pair).find('.bulgarian').removeClass('highlight-bulgarian');
+        $(pair).removeClass('title-english title-bulgarian');
 
         if (index === currentIndex) {
-            pair.querySelector('.english').classList.add('highlight-english');
-            pair.querySelector('.bulgarian').classList.add('highlight-bulgarian');
+            $(pair).find('.english').addClass('highlight-english');
+            $(pair).find('.bulgarian').addClass('highlight-bulgarian');
         }
 
         // Add title classes back if it's a title
         if (sentences[index] && sentences[index].title) {
-            pair.classList.add('title-english', 'title-bulgarian');
+            $(pair).addClass('title-english title-bulgarian');
         }
     });
     moveButtonToCurrentSentence();
@@ -98,10 +98,10 @@ function selectSentence(index) {
 }
 
 function handleResize() {
-    if (window.innerWidth <= 600) {
-        origButton.textContent = "ОРИГИНАЛ";
+    if ($(window).width() <= 600) {
+        origButton.text("ОРИГИНАЛ");
     } else {
-        origButton.textContent = "ОРИГ";
+        origButton.text("ОРИГ");
     }
 }
 
@@ -118,56 +118,42 @@ function highlightActiveButton() {
     };
 
     const activeButtonId = buttons[currentPath] || "button-A1";
-    const activeButton = document.getElementById(activeButtonId);
+    const activeButton = $(`#${activeButtonId}`);
 
-    if (activeButton) {
-        activeButton.classList.add("active-button");
+    if (activeButton.length) {
+        activeButton.addClass("active-button");
     }
 }
 
 function highlightSelectedPair(event) {
-    document.querySelectorAll('.sentence-pair-container').forEach((container) => {
-        container.classList.remove('selected');
-    });
-    event.currentTarget.classList.add('selected');
+    $('.sentence-pair-container').removeClass('selected');
+    $(event.currentTarget).addClass('selected');
 }
 
 function preventScrolling() {
-    document.body.style.overflow = 'hidden';
+    $('body').css('overflow', 'hidden');
 }
 
 function allowScrolling() {
-    document.body.style.overflow = 'auto';
+    $('body').css('overflow', 'auto');
 }
 
 function showAppContainer() {
-    if (appContainer) {
-        appContainer.style.display = 'block';
-    }
-    if (bottomButtons) {
-        bottomButtons.style.display = 'flex'; // Показване на бутоните за нивата
-    }
-    if (openDemoButtonContainer) {
-        openDemoButtonContainer.classList.remove('show');
-    }
+    appContainer.show();
+    bottomButtons.show(); // Показване на бутоните за нивата
+    openDemoButtonContainer.hide();
     allowScrolling();
 }
 
 function hideAppContainer() {
-    if (appContainer) {
-        appContainer.style.display = 'none';
-    }
-    if (bottomButtons) {
-        bottomButtons.style.display = 'none'; // Скриване на бутоните за нивата
-    }
-    if (openDemoButtonContainer) {
-        openDemoButtonContainer.classList.add('show');
-    }
+    appContainer.hide();
+    bottomButtons.hide(); // Скриване на бутоните за нивата
+    openDemoButtonContainer.show();
     preventScrolling();
 }
 
-window.addEventListener('resize', handleResize);
-document.addEventListener('DOMContentLoaded', () => {
+$(window).on('resize', handleResize);
+$(document).ready(() => {
     handleResize(); // Set the initial state
     highlightActiveButton(); // Highlight the active button
 
@@ -178,21 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
         showAppContainer();
     }
 
-    if (openDemoButton) {
-        openDemoButton.addEventListener('click', () => {
-            showAppContainer();
-        });
-    }
+    openDemoButton.on('click', showAppContainer);
+    closeDemoButton.on('click', hideAppContainer);
 
-    if (closeDemoButton) {
-        closeDemoButton.addEventListener('click', () => {
-            hideAppContainer();
-        });
-    }
-
-    if (document.getElementById('button-A1')) {
-        document.getElementById('button-A1').addEventListener('click', () => {
-            if (appContainer.style.display === 'block') {
+    if ($('#button-A1').length) {
+        $('#button-A1').on('click', () => {
+            if (appContainer.is(':visible')) {
                 hideAppContainer();
             } else {
                 showAppContainer();
@@ -201,54 +178,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     sentences.forEach((sentence, index) => {
-        const container = document.createElement('div');
-        container.className = 'sentence-pair-container';
-        container.addEventListener('click', highlightSelectedPair); // Add event listener for selection
+        const container = $('<div>', { class: 'sentence-pair-container' });
+        container.on('click', highlightSelectedPair); // Add event listener for selection
 
-        const sentencePair = document.createElement('div');
-        sentencePair.className = 'sentence-pair';
+        const sentencePair = $('<div>', { class: 'sentence-pair' });
 
-        const englishDiv = document.createElement('div');
-        englishDiv.className = 'sentence english';
-        englishDiv.textContent = sentence.english;
-
-        const bulgarianDiv = document.createElement('div');
-        bulgarianDiv.className = 'sentence bulgarian';
-        bulgarianDiv.textContent = sentence.bulgarian;
+        const englishDiv = $('<div>', { class: 'sentence english', text: sentence.english });
+        const bulgarianDiv = $('<div>', { class: 'sentence bulgarian', text: sentence.bulgarian });
 
         if (sentence.title) {
-            englishDiv.classList.add('title-english');
-            bulgarianDiv.classList.add('title-bulgarian');
-            englishDiv.textContent = englishDiv.textContent.toUpperCase();
-            bulgarianDiv.textContent = bulgarianDiv.textContent.toUpperCase();
+            englishDiv.addClass('title-english').text(englishDiv.text().toUpperCase());
+            bulgarianDiv.addClass('title-bulgarian').text(bulgarianDiv.text().toUpperCase());
         }
 
-        const playButtonContainer = document.createElement('div');
-        playButtonContainer.className = 'play-button-container';
+        const playButtonContainer = $('<div>', { class: 'play-button-container' });
+        const playButton = $('<div>', { class: 'play-button', html: '((( &nbsp; &#9654; )))' }); // Play button icon
+        playButton.on('click', () => selectSentence(index));
 
-        const playButton = document.createElement('div');
-        playButton.className = 'play-button';
-        playButton.innerHTML = '((( &nbsp; &#9654; )))'; // Play button icon
-        playButton.addEventListener('click', () => selectSentence(index));
-
-        playButtonContainer.appendChild(playButton);
-
-        container.appendChild(playButtonContainer);
-        container.appendChild(sentencePair);
-        sentencePair.appendChild(englishDiv);
-        sentencePair.appendChild(bulgarianDiv);
-        sentenceList.appendChild(container);
+        playButtonContainer.append(playButton);
+        container.append(playButtonContainer);
+        container.append(sentencePair);
+        sentencePair.append(englishDiv);
+        sentencePair.append(bulgarianDiv);
+        sentenceList.append(container);
     });
 
     // Move the controls container to the first sentence pair on page load
-    controlsContainer.style.display = 'block'; // Ensure controls container is visible
-    const firstSentenceContainer = document.querySelector('.sentence-pair-container');
-    if (firstSentenceContainer) {
-        const playButtonContainer = firstSentenceContainer.querySelector('.play-button-container');
-        if (playButtonContainer) {
-            playButtonContainer.appendChild(controlsContainer);
+    controlsContainer.show(); // Ensure controls container is visible
+    const firstSentenceContainer = $('.sentence-pair-container').first();
+    if (firstSentenceContainer.length) {
+        const playButtonContainer = firstSentenceContainer.find('.play-button-container');
+        if (playButtonContainer.length) {
+            playButtonContainer.append(controlsContainer);
         }
     }
 
-    startButton.addEventListener('click', playAudio);
+    startButton.on('click', playAudio);
 });
